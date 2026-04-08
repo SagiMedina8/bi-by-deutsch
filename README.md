@@ -1,0 +1,146 @@
+# BI by Deutsch
+
+Professional website for Avi Deutsch — BI Consultant & Mentor specializing in DAX, data modeling, and Power BI.
+
+Built with [Astro](https://astro.build) + [Decap CMS](https://decapcms.org) + [Netlify](https://netlify.com).
+
+---
+
+## Quick Start (Local Development)
+
+```bash
+npm install
+npm run dev
+```
+
+Site runs at `http://localhost:4321`
+
+---
+
+## Deploy to Netlify (Free) — Step by Step
+
+### 1. Push to GitHub
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/bi-by-deutsch.git
+git push -u origin main
+```
+
+### 2. Connect to Netlify
+
+1. Go to [netlify.com](https://netlify.com) and sign up (free) with GitHub
+2. Click **"Add new site"** → **"Import an existing project"**
+3. Select your GitHub repo (`bi-by-deutsch`)
+4. Netlify auto-detects the settings from `netlify.toml` — just click **"Deploy"**
+5. Wait ~60 seconds — your site is live at `https://YOUR-SITE.netlify.app`
+
+### 3. Enable Decap CMS (Content Manager)
+
+For Avi to add articles without code, enable Netlify Identity:
+
+1. In Netlify dashboard → **Site settings** → **Identity** → **Enable Identity**
+2. Under **Registration**, select **"Invite only"** (so only Avi can log in)
+3. Under **Services** → **Git Gateway** → **Enable Git Gateway**
+4. Go to **Identity** tab → **Invite users** → Enter Avi's email
+5. Avi gets an email, sets password, and can now go to `yoursite.com/admin` to write articles!
+
+### 4. Custom Domain (Optional, ~$12/year)
+
+1. Buy a domain (e.g., `bideutsch.com`) from [Namecheap](https://namecheap.com) or similar
+2. In Netlify → **Domain management** → **Add custom domain**
+3. Follow Netlify's DNS instructions
+4. Free HTTPS is auto-configured
+
+---
+
+## How Avi Writes a New Article
+
+1. Go to `yoursite.com/admin`
+2. Log in with email/password
+3. Click **"Articles"** → **"New Article"**
+4. Fill in: Title, Description, Date, Category
+5. Write the article in the visual editor (supports Markdown, images, code blocks)
+6. Click **"Save"** (saves as draft) or **"Publish"** (goes live)
+7. Netlify auto-rebuilds the site in ~30 seconds
+
+### Writing DAX Code Blocks
+
+In the markdown editor, use triple backticks with `dax` for syntax-highlighted code:
+
+````
+```dax
+Total Sales = SUMX(Sales, Sales[Qty] * Sales[Price])
+```
+````
+
+---
+
+## Project Structure
+
+```
+bi-by-deutsch/
+├── public/
+│   ├── admin/
+│   │   ├── index.html        ← Decap CMS entry point
+│   │   └── config.yml        ← CMS content type definitions
+│   ├── images/
+│   │   └── avi-deutsch.jpg   ← Profile photo
+│   └── favicon.svg
+├── src/
+│   ├── content/
+│   │   └── home.json         ← Homepage content (editable via CMS)
+│   ├── layouts/
+│   │   ├── BaseLayout.astro  ← Main layout (nav + footer)
+│   │   └── ArticleLayout.astro ← Single article layout
+│   ├── pages/
+│   │   ├── index.astro       ← Homepage
+│   │   ├── articles.astro    ← Articles listing
+│   │   ├── courses.astro     ← Courses (coming soon)
+│   │   ├── contact.astro     ← Contact form
+│   │   └── articles/         ← Markdown articles live here
+│   │       ├── understanding-calculate-filter-context.md
+│   │       ├── star-schema-vs-flat-tables.md
+│   │       └── building-date-table-that-works.md
+│   └── styles/
+│       └── global.css        ← All styles
+├── astro.config.mjs
+├── netlify.toml
+├── package.json
+└── README.md
+```
+
+---
+
+## Customization
+
+### Change Brand Name
+Search and replace "BI by Deutsch" in:
+- `src/layouts/BaseLayout.astro` (nav logo)
+- `src/pages/index.astro` (if needed)
+
+### Change Colors
+Edit CSS variables in `src/styles/global.css`:
+```css
+:root {
+  --color-accent: #0F6E56;       /* Main green */
+  --color-accent-light: #E1F5EE; /* Light green bg */
+  --color-accent-dark: #085041;  /* Dark green hover */
+}
+```
+
+### Add New Article Categories
+Edit `public/admin/config.yml` → collections → articles → fields → category → options
+
+---
+
+## Tech Stack
+
+- **Astro 5** — Static site generator (fast, SEO-friendly)
+- **Decap CMS** — Git-based headless CMS with visual editor
+- **Netlify** — Free hosting with CI/CD, forms, and identity
+- **DM Sans** — Typography
+- **JetBrains Mono** — Code blocks
