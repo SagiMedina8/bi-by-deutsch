@@ -6,57 +6,6 @@ Built with [Astro](https://astro.build) + [Decap CMS](https://decapcms.org) + [N
 
 ---
 
-## Quick Start (Local Development)
-
-```bash
-npm install
-npm run dev
-```
-
-Site runs at `http://localhost:4321`
-
----
-
-## Deploy to Netlify (Free) — Step by Step
-
-### 1. Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/bi-by-deutsch.git
-git push -u origin main
-```
-
-### 2. Connect to Netlify
-
-1. Go to [netlify.com](https://netlify.com) and sign up (free) with GitHub
-2. Click **"Add new site"** → **"Import an existing project"**
-3. Select your GitHub repo (`bi-by-deutsch`)
-4. Netlify auto-detects the settings from `netlify.toml` — just click **"Deploy"**
-5. Wait ~60 seconds — your site is live at `https://YOUR-SITE.netlify.app`
-
-### 3. Enable Decap CMS (Content Manager)
-
-For Avi to add articles without code, enable Netlify Identity:
-
-1. In Netlify dashboard → **Site settings** → **Identity** → **Enable Identity**
-2. Under **Registration**, select **"Invite only"** (so only Avi can log in)
-3. Under **Services** → **Git Gateway** → **Enable Git Gateway**
-4. Go to **Identity** tab → **Invite users** → Enter Avi's email
-5. Avi gets an email, sets password, and can now go to `yoursite.com/admin` to write articles!
-
-### 4. Custom Domain (Optional, ~$12/year)
-
-1. Buy a domain (e.g., `bideutsch.com`) from [Namecheap](https://namecheap.com) or similar
-2. In Netlify → **Domain management** → **Add custom domain**
-3. Follow Netlify's DNS instructions
-4. Free HTTPS is auto-configured
-
----
-
 ## How Avi Writes a New Article
 
 1. Go to `yoursite.com/admin`
